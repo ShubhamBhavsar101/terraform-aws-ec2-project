@@ -62,5 +62,5 @@ resource "aws_ssm_parameter" "db_name" {
 resource "aws_ssm_parameter" "rds_secret_name" {
   name = "/db/mysql/rds_secret_name"
   type = "String"
-  value = split(":", aws_db_instance.mysql.master_user_secret[0].secret_arn)[6]
+  value = aws_db_instance.mysql.master_user_secret[0].secret_arn
 }
