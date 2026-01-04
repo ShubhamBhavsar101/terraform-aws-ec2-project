@@ -23,6 +23,10 @@ resource "aws_db_instance" "mysql" {
 
 }
 
+# output rds_secret_name {
+#   value = split(":", aws_db_instance.mysql.master_user_secret[0].secret_arn)[6]
+# }
+
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name = "terraform-sqldb-subnet-group"
   subnet_ids = var.public_subnet_ids
@@ -53,4 +57,10 @@ resource "aws_ssm_parameter" "db_name" {
   name = "/db/mysql/db_name"
   type = "String"
   value = aws_db_instance.mysql.db_name
+}
+
+resource "aws_ssm_parameter" "rds_secret_name" {
+  name = "/db/mysql/rds_secret_name"
+  type = "String"
+  value = split(":", aws_db_instance.mysql.master_user_secret[0].secret_arn)[6]
 }
