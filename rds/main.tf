@@ -32,13 +32,25 @@ resource "aws_secretsmanager_secret" "db_metadata" {
   name = "mysql-db-metadata"
 }
 
-resource "aws_secretsmanager_secret_version" "db_metadata_value" {
-  secret_id = aws_secretsmanager_secret.db_metadata.id
+# resource "aws_secretsmanager_secret_version" "db_metadata_value" {
+#   secret_id = aws_secretsmanager_secret.db_metadata.id
 
-  secret_string = jsonencode({
-    db_name  = aws_db_instance.mysql.db_name
-    host     = aws_db_instance.mysql.address
-    port     = aws_db_instance.mysql.port
-    username = aws_db_instance.mysql.username
-  })
+#   secret_string = jsonencode({
+#     db_name  = aws_db_instance.mysql.db_name
+#     host     = aws_db_instance.mysql.address
+#     port     = aws_db_instance.mysql.port
+#     username = aws_db_instance.mysql.username
+#   })
+# }
+
+resource "aws_ssm_parameter" "db_host" {
+  name  = "/db/mysql/host"
+  type  = "String"
+  value = aws_db_instance.mysql.address
+}
+
+resource "aws_ssm_parameter" "db_name" {
+  name = "/db/mysql/name"
+  type = "String"
+  value = aws_db_instance.mysql.db_name
 }
