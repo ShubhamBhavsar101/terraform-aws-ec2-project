@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ec2_role" {
-  name = "role-secretsmanager-readwrite"
+  name = "role-ec2-secrets-readwrite"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -14,6 +14,15 @@ resource "aws_iam_role" "ec2_role" {
     ]
   })
 }
+resource "aws_iam_role_policy_attachment" "ssm_access" {
+  role       = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+}
+
+resource "aws_iam_instance_profile" "secrets_manager_profile" {
+  name = "ec2-secrets-manager-profile"
+  role = aws_iam_role.ec2_role.name
+}
 
 resource "aws_iam_role_policy_attachment" "secrets_manager_access" {
   role       = aws_iam_role.ec2_role.name
@@ -21,7 +30,7 @@ resource "aws_iam_role_policy_attachment" "secrets_manager_access" {
 }
 
 resource "aws_iam_instance_profile" "secrets_manager_profile" {
-  name = "ec2-secrets-manager-profile"
+  name = "ec2-secrets-profile"
   role = aws_iam_role.ec2_role.name
 }
 
