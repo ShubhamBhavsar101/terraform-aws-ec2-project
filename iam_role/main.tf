@@ -19,11 +19,6 @@ resource "aws_iam_role_policy_attachment" "ssm_access" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
 }
 
-resource "aws_iam_instance_profile" "secrets_manager_profile" {
-  name = "ec2-secrets-manager-profile"
-  role = aws_iam_role.ec2_role.name
-}
-
 resource "aws_iam_role_policy_attachment" "secrets_manager_access" {
   role       = aws_iam_role.ec2_role.name
   policy_arn = "arn:aws:iam::aws:policy/SecretsManagerReadWrite"
