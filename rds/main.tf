@@ -50,7 +50,7 @@ resource "aws_ssm_parameter" "db_host" {
 }
 
 resource "aws_ssm_parameter" "db_name" {
-  name = "/db/mysql/name"
+  name = "/db/mysql/db_name"
   type = "String"
   value = aws_db_instance.mysql.db_name
 }
