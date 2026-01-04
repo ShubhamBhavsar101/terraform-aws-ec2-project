@@ -28,9 +28,9 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
   subnet_ids = var.public_subnet_ids
 }
 
-resource "aws_secretsmanager_secret" "db_metadata" {
-  name = "mysql-db-metadata"
-}
+# resource "aws_secretsmanager_secret" "db_metadata" {
+#   name = "mysql-db-metadata"
+# }
 
 # resource "aws_secretsmanager_secret_version" "db_metadata_value" {
 #   secret_id = aws_secretsmanager_secret.db_metadata.id
