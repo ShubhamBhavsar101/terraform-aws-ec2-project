@@ -1,0 +1,32 @@
+name: Test Terraform
+
+on:
+  workflow_dispatch: 
+    inputs:
+      action:
+        description: Select action to perform
+        type: choice
+        options:
+          - plan
+          - apply
+          - destroy
+
+jobs:
+  terraform_deployment:
+    runs_on: ubuntu_latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Terraform Install
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Configure AWS Credentials
+      uses: 
+      
+
+      
+      
+
+  
