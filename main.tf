@@ -6,12 +6,12 @@ module "vpc" {
   tag_name   = "Terraform Test VPC"
 }
 
-# module "rds_instance" {
-#   source = "./rds"
-#   rds_mysql_sg_id = module.security_group.rds_mysql_sg_id
-#   public_subnet_ids = module.subnet.public_subnet_ids
+module "rds_instance" {
+  source = "./rds"
+  rds_mysql_sg_id = module.security_group.rds_mysql_sg_id
+  public_subnet_ids = module.subnet.public_subnet_ids
 
-# }
+}
 
 module "internet_gateway" {
   source = "./internet-gateways"
