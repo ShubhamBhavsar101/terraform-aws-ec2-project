@@ -76,7 +76,7 @@ module "acm" {
 
 module "route53" {
   source                    = "./route53"
-  domain_name               = "shubhambuilds.space"
+  domain_name               = "shubhambuilds.space"                       # Replace your domain name here
   dns_name                  = module.load_balancer.dns_name
   zone_id                   = module.load_balancer.zone_id
   domain_validation_options = module.acm.apache_domain_validation_options
