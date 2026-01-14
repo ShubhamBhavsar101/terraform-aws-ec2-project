@@ -1,6 +1,6 @@
 # Deploy Infrastructure to AWS Cloud using Terraform
 
-Deploy live web flask application using services like EC2, Security Groups, ALB, Target Groups, Certificate Manager, RDS Mysql and Route53 using Terraform
+Deploy live web flask application using services like EC2, Security Groups, ALB, Target Groups, Certificate Manager, RDS Mysql and Route53 using Terraform via Github Actions Workflow
 
 # Steps to Perform before running Jenkins pipeline
 
