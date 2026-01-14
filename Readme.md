@@ -1,3 +1,7 @@
+# Deploy Infrastructure to AWS Cloud using Terraform
+
+Deploy live web flask application using services like EC2, Security Groups, ALB, Target Groups, Certificate Manager, RDS Mysql and Route53 using Terraform
+
 # Steps to Perform before running Jenkins pipeline
 
 1. Install the AWS Credentials plugin and create credential for access keys in Jenkins
